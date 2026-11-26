@@ -6,6 +6,7 @@ source .env
 for i in 1 2 3 4 5 6; do
   echo ">>> Configurando FDW en nodo$i"
   {
+    echo "SET client_min_messages = warning;"
     echo "CREATE EXTENSION IF NOT EXISTS postgres_fdw;"
     for j in 1 2 3 4 5 6; do
       [ "$i" = "$j" ] && continue
