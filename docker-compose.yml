@@ -1,0 +1,78 @@
+x-nodo: &nodo
+  image: postgres:17
+  restart: unless-stopped
+  environment:
+    POSTGRES_USER: ${PG_USER}
+    POSTGRES_PASSWORD: ${PG_PASSWORD}
+    POSTGRES_DB: ${PG_DB}
+  command: >
+    postgres
+    -c wal_level=logical
+    -c max_prepared_transactions=20
+    -c max_connections=100
+  networks: [red_bdd]
+  healthcheck:
+    test: ["CMD-SHELL", "pg_isready -U ${PG_USER} -d ${PG_DB}"]
+    interval: 5s
+    timeout: 5s
+    retries: 10
+
+services:
+  nodo1:
+    <<: *nodo
+    container_name: nodo1_lapaz
+    ports: ["5441:5432"]
+    volumes:
+      - nodo1_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+  nodo2:
+    <<: *nodo
+    container_name: nodo2_santacruz
+    ports: ["5442:5432"]
+    volumes:
+      - nodo2_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+  nodo3:
+    <<: *nodo
+    container_name: nodo3_cochabamba
+    ports: ["5443:5432"]
+    volumes:
+      - nodo3_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+  nodo4:
+    <<: *nodo
+    container_name: nodo4_tarija
+    ports: ["5444:5432"]
+    volumes:
+      - nodo4_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+  nodo5:
+    <<: *nodo
+    container_name: nodo5_oruro
+    ports: ["5445:5432"]
+    volumes:
+      - nodo5_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+  nodo6:
+    <<: *nodo
+    container_name: nodo6_beni
+    ports: ["5446:5432"]
+    volumes:
+      - nodo6_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+networks:
+  red_bdd:
+
+volumes:
+  nodo1_data:
+  nodo2_data:
+  nodo3_data:
+  nodo4_data:
+  nodo5_data:
+  nodo6_data:
