@@ -1,0 +1,43 @@
+Equipo 1 — Arquitectura y base de datos
+
+Herramientas:
+- erwin Data Modeler o diagrams.net: diseñar el modelo entidad-relación.
+- PostgreSQL: crear tablas, claves primarias y foráneas.
+- DataGrip: ejecutar y verificar scripts SQL.
+- VS Code: organizar los archivos del proyecto.
+
+Equipo 2 — Infraestructura y fragmentación horizontal
+
+Herramientas:
+- Docker Desktop: levantar seis contenedores.
+- Docker Compose: configurar los servidores y sus redes.
+- PostgreSQL: implementar fragmentos de ventas.
+- postgres_fdw: conectar nodos PostgreSQL.
+- DataGrip: verificar la distribución de registros.
+
+Equipo 3 — Fragmentación vertical y replicación
+
+Herramientas:
+- PostgreSQL: separar datos generales y financieros de clientes.
+- SQL: crear tablas y consultas de fragmentación.
+- Replicación lógica de PostgreSQL: configurar PUBLICATION y SUBSCRIPTION.
+- DataGrip: comprobar que los productos se actualizan en los seis nodos.
+
+Equipo 4 — Consultas y transacciones distribuidas
+
+Herramientas:
+- PostgreSQL: consultas, vistas y transacciones.
+- postgres_fdw: consultas entre servidores.
+- SQL: JOIN, COMMIT, ROLLBACK y transacciones preparadas.
+- Python + psycopg: implementar un coordinador 2PC entre nodos.
+- DataGrip: ejecutar pruebas.
+
+Equipo 5 — Datos, pruebas e integración
+
+Herramientas:
+- Python + Faker: generar datos de prueba.
+- PostgreSQL: cargar y consultar 50.000 ventas.
+- Docker: simular caídas de nodos.
+- pytest: automatizar pruebas.
+- GitHub: integrar los módulos de los cinco equipos.
+- Word: preparar la documentación final
